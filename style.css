@@ -1,61 +1,72 @@
 html {
-  background-color: #161616;
-  color: #b8bb26;
-  font-size: 2.1vw;
-  font-size: calc(16px + 0.390625vw);
+ background-color: #161616;
+ color: #b8bb26;
+ font-size: 2.1vw;
+ font-size: calc(16px + 0.390625vw);
 }
 body {background-color: #161616;}
 body {color: #b8bb26;}
 
 a {
-  color: #fabd2f;
+ color: #fabd2f;
 }
 a:visited {
-  color: #d79921;
+ color: #d79921;
 }
 p,h1,h2 {
-  padding-right: 15vw;
-  padding-left: 15vw;
-  }
+ padding-right: 15vw;
+ padding-left: 15vw;
+}
 @media screen and (max-width: 768px) {
-	p,h1,h2 {
+ p,h1,h2 {
   padding-right: calc(8px + 1.5625vw);
   padding-left: calc(8px + 1.5625vw);
 }}
 p {
-	padding-bottom: calc(1.5625vw);
+ padding-bottom: calc(1.5625vw);
 }
 h1, p {
-       margin: 0px;
+ margin: 0px;
 }
 h2, p {
-       margin: 0px;
+ margin: 0px;
 }
 .notes {
-  text-align: right;
-  padding-right: calc(8px + 1.5625vw);
-  padding-left: calc(8px + 1.5625vw);
+ text-align: right;
+ padding-right: calc(8px + 1.5625vw);
+ padding-left: calc(8px + 1.5625vw);
 }
 
 div {
-  text-align: center;
-  padding-right: calc(8px + 1.5625vw);
-  padding-left: calc(8px + 1.5625vw);
+ text-align: center;
+ padding-right: calc(8px + 1.5625vw);
+ padding-left: calc(8px + 1.5625vw);
 }
 
 .quote {
-  margin: 2vw;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: calc(8px + 1.5625vw);
-  padding-left: calc(8px + 1.5625vw);
-  text-align: center;
+ margin: 2vw;
+ padding-top: 0;
+ padding-bottom: 0;
+ padding-right: calc(8px + 1.5625vw);
+ padding-left: calc(8px + 1.5625vw);
+ text-align: center;
 }
+
 .blink {
-  animation: blinker 0.7s step-start infinite;
+ animation: blinker 0.7s step-start infinite;
+}
+
+.center {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+img{
+ animation: blinker 1s step-start infinite;
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+ 50% {
+  opacity: 0;
+ }
