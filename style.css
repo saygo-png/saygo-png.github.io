@@ -1,12 +1,18 @@
 html {
   background-color: #161616;
   color: #b8bb26;
-  font-size: 2vw;
-  font-size: calc(15px + 0.390625vw);
+  font-size: 2.1vw;
+  font-size: calc(16px + 0.390625vw);
 }
 body {background-color: #161616;}
 body {color: #b8bb26;}
 
+a {
+  color: #fabd2f;
+}
+a:visited {
+  color: #d79921;
+}
 p,h1,h2 {
   padding-right: 15vw;
   padding-left: 15vw;
