@@ -2,8 +2,8 @@ html {
   font-size: 2vw;
   font-size: calc(15px + 0.390625vw);
 }
-body {background-color: black;}
-body {color: #7d8618;}
+body {background-color: #161616;}
+body {color: #b8bb26;}
 
 p,h1,h2 {
   padding-right: 15vw;
