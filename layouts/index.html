@@ -1,3 +1,4 @@
+{{ define "main" -}}
 <!DOCTYPE html>
 <html style="background-color:#161616" lang="en">
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -18,7 +19,6 @@
   <p>
   I live in Poland, i do art and i like to configure my computer exactly to my liking.
   <p>
-
 <!-- add this back when you feel like being more pretentious again. -->
 
   <!--  I live in Poland and create art inspired by the digital medium and it's properties, you can view this artwork in my <a href="https://saygo-png.github.io/gallery/index.html" target="_blank">web gallery</a>. I use and encourage the use of <em>free</em> as in freedom software. I speak polish and english at a high level. -->
@@ -42,7 +42,7 @@
    I use Debian stable and create artwork using Krita with G'Mic and Inkscape DEV. Click <a href="/desktop.webp">here</a> to see my desktop, "dotfiles" are available on my <a href="https://github.com/saygo-png" target="_blank">github</a> profile.
   </p>
   <footer>
-   <img class="center" src="/kathy_jarboe.gif" alt="kathy_jarboe.gif"/>
+   <img class="center blink" src="/kathy_jarboe.gif" alt="kathy_jarboe.gif"/>
    <p class="notes"> Contact: <br>
     <b>Matrix</b>: <b> @saygo.2:tchncs.de</b>
     <br>E-Mail: saygo.mail@proton.me <br>Discord: saygo.temp <br>
@@ -54,4 +54,27 @@
    </p>
   </footer>
  </body>
-</html>
+{{ .Content }}
+  <h1 style="text-align:center">
+   Blog
+  </h1>
+<div class="text-center">
+ <div class="display-inline">
+
+<ul style="text-align:left">
+{{- range.Pages }}
+<li style="text-align:left">
+	{{- if .Param "datesinlist" }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; {{ end -}}
+	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+	{{- if .Param "authorsinlist" }}
+	{{ with .Params.authors }}
+		by
+		{{ delimit . ", " " and " }}
+ </div>
+ </div>
+	{{end}}
+	{{ end -}}
+</li>
+{{- end }}
+</ul>
+{{- end }}
