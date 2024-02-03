@@ -1,0 +1,4 @@
+baseURL = 'http://saygo-png.github.io/'
+languageCode = 'en-us'
+title = "Saygo's liar"
+theme = 'lugo'
