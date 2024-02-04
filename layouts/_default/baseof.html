@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color:#161616" lang="{{ .Site.Language }}">
+<html lang="{{ .Site.Language }}">
 <head>
 	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
 	<link rel="canonical" href="{{ .Site.BaseURL }}">
@@ -17,9 +17,7 @@
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
-<br>
-<header><h1 style="text-align:center"id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
-<br>
+<header><h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
 <article>
 {{ block "main" . }}
 {{ .Content }}
@@ -30,34 +28,7 @@
 </main>
 {{ block "footer" . }}
 <footer>
-<!-- Created Date -->
-{{- $pubdate := .PublishDate.Format "2006-01-02" }}
-<div class="center">
-<br>
-Post created:
-<time datetime="{{ .PublishDate }}" title="{{ .PublishDate }}">
-    {{$pubdate}}
-</time>
-</div>
-
-<!-- Last Updated Date -->
-{{- if .Lastmod }}
- {{- $lastmod := .Lastmod.Format "2006-01-02" }}
- {{- if ne $lastmod $pubdate }}
-  <div class="center">
-   (Post updated:
-   <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
-    {{ $lastmod }}
-   </time>)
-  </div>
- {{- end }}
-{{- end }}
-	{{- if .Param "showrss" }}
- <div class="center">
- <br>
- <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
-  </div>
- {{ end }}
+	{{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }}
 </footer>
 {{ end }}
 </body>

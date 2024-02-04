@@ -1,6 +1,6 @@
 ---
 title: "Migrating to Hugo and creating a blog"
-date: 2024-02-03
+date: 2024-02-03T08:34:21+01:00
 draft: false
 tags: ['computers', 'meta',]
 ---
