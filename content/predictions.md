@@ -1,7 +1,7 @@
 ---
 title: "Year 2050 predictions"
 date: 2024-02-11
-draft: true
+draft: false
 ---
 
 I've seen Tom Scott make a video in which he made predictions and later came back to it, to see if he got anything right. I'd like to do the same in written form.
