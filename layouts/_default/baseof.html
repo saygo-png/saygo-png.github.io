@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language }}">
+<html style="background-color:#161616" lang="{{ .Site.Language }}">
 <head>
 	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
-	<link rel="canonical" href="{{ .Site.BaseURL }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel='stylesheet' type='text/css' href='/style.css'>
 	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
@@ -14,12 +13,14 @@
 	<meta name="robots" content="index, follow">
 	<meta charset="utf-8">
 	<meta name="google-site-verification" content="ycv5UFtBUyXTQDM_sGIYXDW6LV-n4afxYapSyo0ByfI">
-	<meta name="description" content="personal website of Saygo">
 </head>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
+<header>
+ <h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+</header>
+<br>
 <main>
-<header><h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
 <article>
 {{ block "main" . }}
 {{ .Content }}
@@ -28,10 +29,10 @@
 {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 </article>
 </main>
-{{ block "footer" . }}
 <footer>
+{{ block "footer" . }}
 	{{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }}
-</footer>
 {{ end }}
+</footer>
 </body>
 </html>

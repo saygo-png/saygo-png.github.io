@@ -1,45 +1,24 @@
 {{ define "main" -}}
-<!DOCTYPE html>
-<html style="background-color:#161616" lang="en">
-<link rel="stylesheet" type="text/css" href="style.css">
-  <meta name="description" content="personal website of Saygo">
-  <title>Saygo's Lair</title>
- </head>
- <body>
+<header>
   <p class="quote">
    <em>
     “It's been established that time is not a rigid construct”
    </em>
   </p>
+</header>
+  <article>
   <h1 style="text-align:left">
    Saygo
   </h1>
   <p>
   I live in Poland, i do art and i like to configure my computer exactly to my liking.
-  <p>
-<!-- add this back when you feel like being more pretentious again. -->
-
-  <!--  I live in Poland and create art inspired by the digital medium and it's properties, you can view this artwork in my <a href="https://saygo-png.github.io/gallery/index.html" target="_blank">web gallery</a>. I use and encourage the use of <em>free</em> as in freedom software. I speak polish and english at a high level. -->
-  <!-- </p> -->
-  <!-- <h2 style="text-align:left"> -->
-  <!--  <a href="https://saygo-png.github.io/gallery/index.html" target="_blank">Web art gallery</a> -->
-  <!-- </h2> -->
-  <!-- <p> -->
-  <!--  The gallery contains full quality images of my artworks hence it will load slowly as my works contain a lot of data. I suggest using external image viewing software to view the works at different scales without "anti-aliasing" or "filtering" in order to see individual pixels in my artwork, considering that I have designed them to have beauty and complexity at the smallest scales. -->
-  <!-- </p> -->
-  <!-- <h2 style="text-align:left"> -->
-  <!--  Freedom in art -->
-  <!-- </h2> -->
-  <!-- <p> -->
-  <!--  I release my works under a free license. You are encouraged to redistribute, remix and build upon my work. I believe that the sharing of visual ideas, styles and methods of creation have been the main methods by which art has evolved to it's current state, thus as an artist I feel it is imperative for me to keep my works free. <br>In addition to this licensing and unlike most artists I release my software-specific artwork files (think .psd), which provide insight into how I made an artwork as they include all data that my program saves when I'm creating, rendered formats like .png or .webp only contain the image itself and none of it's components. <br>You can download these files by clicking on an image in my <a href="https://saygo-png.github.io/gallery/index.html" target="_blank">web gallery</a> and accessing the files section on the archive.org page of the artwork. -->
-  <!-- </p> -->
+  </p>
   <h2 style="text-align:left">
    Software
   </h2>
   <p>
    I use Debian stable and create artwork using Krita with G'Mic and Inkscape DEV. Click <a href="/desktop.webp">here</a> to see my desktop, "dotfiles" are available on my <a href="https://github.com/saygo-png" target="_blank">github</a> profile.
   </p>
-  <footer>
    <img class="center blink" src="/kathy_jarboe.gif" alt="kathy_jarboe.gif"/>
    <p class="notes"> Contact: <br>
     <b>Matrix</b>: <b> @saygo.2:tchncs.de</b>
@@ -50,15 +29,11 @@
     <br>Github: <a href="https://github.com/saygo-png" target="_blank">https://github.com/saygo-png</a>
     <br>Game i worked on: <a href="https://aejjee.itch.io/samnslime" target="_blank">https://aejjee.itch.io/samnslime</a>
    </p>
-  </footer>
- </body>
-{{ .Content }}
   <h1 style="text-align:center">
    Blog
   </h1>
 <div class="text-center">
  <div class="display-inline">
-
 <ul style="text-align:left">
 {{- range.Pages }}
 <li style="text-align:left">
@@ -68,11 +43,12 @@
 	{{ with .Params.authors }}
 		by
 		{{ delimit . ", " " and " }}
- </div>
+  </div>
  </div>
 	{{end}}
 	{{ end -}}
 </li>
 {{- end }}
 </ul>
+</article>
 {{- end }}
