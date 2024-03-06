@@ -25,13 +25,17 @@
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
-{{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
-{{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 </article>
 </main>
+{{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
 <footer>
+{{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 {{ block "footer" . }}
-	{{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }}
+	{{- if .Param "showrss" }}
+	<br>
+	<a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates.">
+	</a>
+	{{ end }}
 {{ end }}
 </footer>
 </body>
