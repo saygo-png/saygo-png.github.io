@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html style="background-color:#161616" lang="{{ .Site.Language }}">
 <head>
-	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
-	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
-	{{ $style := resources.Get "/style.css" | minify | fingerprint "md5" }}
-	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
-	{{ end -}}
-	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
-	{{ if isset .Params "tags" }}<meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
-	{{ end -}}
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="robots" content="index, follow">
-	<meta charset="utf-8">
-	<meta name="google-site-verification" content="ycv5UFtBUyXTQDM_sGIYXDW6LV-n4afxYapSyo0ByfI">
+ <title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
+ <link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
+ {{ $style := resources.Get "/style.css" | minify | fingerprint "md5" }}
+ <link rel="stylesheet" href="{{ $style.Permalink }}">
+ {{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
+ {{ end -}}
+ <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+ {{ if isset .Params "tags" }}<meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
+ {{ end -}}
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="robots" content="index, follow">
+ <meta charset="utf-8">
 </head>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
@@ -31,11 +31,11 @@
 <footer>
 {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 {{ block "footer" . }}
-	{{- if .Param "showrss" }}
-	<br>
-	<a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates.">
-	</a>
-	{{ end }}
+ {{- if .Param "showrss" }}
+ <br>
+ <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates.">
+ </a>
+ {{ end }}
 {{ end }}
 </footer>
 </body>
