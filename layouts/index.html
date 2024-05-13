@@ -11,30 +11,30 @@
    Saygo
   </h1>
   <p>
-  I live in Poland, i do art and i spend a lot of time changing configs.
-  I'm learning finnish because i really like Finland.
-  Learning new things is fulfiling.
+  I'm a Polish artist, I enjoy software and Linux. Computers are an inspiration for my artworks as well as my medium of choice.
   </p>
+  <h2 style="text-align:left">
+   Art
+  </h2>
   <p>
-  If you are finnish, contact me i need more finnish friends to bother with my nonsense.
+   We cherish traditional techniques and their peculiarities, such as the granulation of watercolor, the brushstrokes of paint, and the texture of paper, but this does not extend to digital art. This medium too has peculiarities; however, they are shunned as tacky and undesirable. This is sad, so I embrace the digital process and its artifacts in my artworks, since they deserve at least equal admiration.
+   See my works <a href="/desktop.webp">here.</a>
   </p>
   <h2 style="text-align:left">
    Software
   </h2>
   <p>
-   I use Debian stable and create artwork using Krita with G'Mic and Inkscape DEV. Click <a href="/desktop.webp">here</a> to see my desktop, "dotfiles" are available on my <a href="https://github.com/saygo-png" target="_blank">github</a> profile.
+   I use Debian stable and create artwork using Krita, Inkscape, Blender and Processing. Click <a href="/desktop.webp">here</a> to see my desktop, dotfiles are available on my <a href="https://github.com/saygo-png" target="_blank">github</a> profile.
   </p>
-   <img class="center blink" src="/kathy_jarboe.gif" alt="kathy_jarboe.gif"/>
+   <img class="center blink" src="/kathy_jarboe.gif" alt="kathy_jarboe.gif">
    <p class="notes"> Contact: <br>
     <b>Matrix</b>: <b> @saygo.2:tchncs.de</b>
     <br>E-Mail: saygo.mail@proton.me <br>Discord: saygo.temp <br>
     <br>Inactive backups: <br>XMPP: saygo@nixnet.services <br>Matrix: @saygo:hackliberty.org <br>
-    <br>Links: <br>Arstation: <a href="https://www.artstation.com/saygo" target="_blank">artstation.com/saygo</a>
-    <br>YouTube: <a href="https://www.youtube.com/@saygo-png " target="_blank">youtube.com/@saygo-png </a>
-    <br>Github: <a href="https://github.com/saygo-png" target="_blank">github.com/saygo-png</a>
-    <br>Game i worked on: <a href="https://aejjee.itch.io/samnslime" target="_blank">aejjee.itch.io/samnslime</a>
-    <br>Finnish deck: <a href="https://ankiweb.net/shared/info/2022129198" target="_blank">ankiweb.net/shared/info/2022129198</a>
-
+    <br>Links: <br>Arstation: <a href="https://www.artstation.com/saygo" target="_blank">https://www.artstation.com/saygo</a>
+    <br>YouTube: <a href="https://www.youtube.com/@saygo-png " target="_blank">https://www.youtube.com/@saygo-png </a>
+    <br>Github: <a href="https://github.com/saygo-png" target="_blank">https://github.com/saygo-png</a>
+    <br>Game i worked on: <a href="https://aejjee.itch.io/samnslime" target="_blank">https://aejjee.itch.io/samnslime</a>
    </p>
   <h1 style="text-align:center">
    Blog
@@ -44,16 +44,16 @@
 <ul style="text-align:left">
 {{- range.Pages }}
 <li style="text-align:left">
- {{- if .Param "datesinlist" }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; {{ end -}}
- <a href="{{ .RelPermalink }}">{{ .Title }}</a>
- {{- if .Param "authorsinlist" }}
- {{ with .Params.authors }}
-  by
-  {{ delimit . ", " " and " }}
+	{{- if .Param "datesinlist" }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; {{ end -}}
+	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+	{{- if .Param "authorsinlist" }}
+	{{ with .Params.authors }}
+		by
+		{{ delimit . ", " " and " }}
   </div>
  </div>
- {{end}}
- {{ end -}}
+	{{end}}
+	{{ end -}}
 </li>
 {{- end }}
 </ul>
