@@ -44,10 +44,5 @@
  {{ end }}
 {{ end }}
 </footer>
-{{ $cat_script := resources.Get "/cat.js" }}
-<script src="{{ $cat_script.Permalink }}">
-{{"// @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11 License" | safeHTML }}
-{{"// @license-end" | safeHTML }}
-</script>
 </body>
 </html>
