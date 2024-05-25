@@ -372,11 +372,11 @@ p,h1,h2 {
   padding-right: calc(8px + 1.5625vw);
   padding-left: calc(8px + 1.5625vw);
 }}
-h1 {
- padding-bottom: calc(1.4625vw);
-}
+/*h1 {*/
+/* padding-bottom: calc(1.4625vw);*/
+/*}*/
 p {
- padding-bottom: calc(3vw);
+ padding-bottom: calc(2vw);
 }
 h1, p {
  margin: 0px;
