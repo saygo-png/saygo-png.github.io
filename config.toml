@@ -1,12 +1,12 @@
 baseURL = 'http://saygo-png.github.io/'
 languageCode = 'en-us'
-title = "Saygo's liar"
+title = "Saygo's lair"
 
 [params]
  # "relatedtext" is the text that appears above the tag list at the bottom of pages.
  relatedtext = "Related"
  favicon = "/favicon.ico"
- description = "personal website of Saygo"
+ description = "Saygo's personal website"
 
  #list items
  datesinlist = true
