@@ -2,7 +2,8 @@
 <header>
   <p class="quote">
    <em>
-    “It's been established that time is not a rigid construct”
+    “It's been established <br>
+    that time is not a rigid construct”
    </em>
   </p>
 </header>
@@ -37,11 +38,13 @@
     <br>Github: <a href="https://github.com/saygo-png" target="_blank">https://github.com/saygo-png</a>
     <br>Game i worked on: <a href="https://aejjee.itch.io/samnslime" target="_blank">https://aejjee.itch.io/samnslime</a>
    </p>
-  <h1 style="text-align:center">
+
+  <h1 style="text-align:left">
    Blog
   </h1>
-<div class="text-center">
- <div class="display-inline">
+<div class="blog">
+<!--<div class="text-center">-->
+<!-- <div class="display-inline">-->
 <ul style="text-align:left">
 {{- range.Pages }}
 <li style="text-align:left">
@@ -51,11 +54,11 @@
  {{ with .Params.authors }}
   by
   {{ delimit . ", " " and " }}
-  </div>
- </div>
  {{end}}
  {{ end -}}
 </li>
 {{- end }}
 </ul>
+ </div>
+<!--</div>-->
 {{- end }}

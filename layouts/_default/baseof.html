@@ -18,28 +18,31 @@
  <meta name="theme-color" content="#7d8618">
  <meta charset="utf-8">
 </head>
-<header>
- <h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
-</header>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
 <article>
+<header>
+ <h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+</header>
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
 </article>
 </main>
-{{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
+{{ if .Param "nextprev" }} {{ partial "nextprev.html" . -}} {{ end -}}
 <footer>
-{{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
-{{ block "footer" . }}
- {{- if .Param "showrss" }}
- <br>
- <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" class="rss" alt="RSS Feed" title="Subscribe via RSS for updates.">
- </a>
+{{ partial "taglist.html" . }}
+ {{ block "footer" . }}
+  <div class="text-center">
+  {{- if .Param "showrss" }}
+   <br>
+   <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" class="rss" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+   <br>
+  {{ end }}
+   <h3> <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }} </h3>
+  </div>
  {{ end }}
-{{ end }}
 </footer>
 </body>
 </html>

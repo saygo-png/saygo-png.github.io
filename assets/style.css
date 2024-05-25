@@ -401,6 +401,14 @@ a:visited {
  color: #d79921;
 }
 
+.blog {
+ text-align: left;
+ padding-right: 15vw;
+ padding-left: 15vw;
+/* padding-right: calc(8px + 1.5625vw);*/
+/* padding-left: calc(8px + 1.5625vw);*/
+}
+
 p,
 h1,
 h2 {
@@ -416,6 +424,14 @@ h2 {
   padding-right: calc(8px + 1.5625vw);
   padding-left: calc(8px + 1.5625vw);
  }
+
+ .blog {
+ text-align: left;
+ padding-right: 15vw;
+ padding-left: 15vw;
+/* padding-right: calc(8px + 1.5625vw);*/
+/* padding-left: calc(8px + 1.5625vw);*/
+}
 }
 
 /*h1 {*/
@@ -435,10 +451,15 @@ p {
  margin: 0px;
 }
 
+p,
+h1,
+h2 {
+}
+
 .notes {
  text-align: right;
- padding-right: calc(8px + 1.5625vw);
- padding-left: calc(8px + 1.5625vw);
+/* padding-right: calc(8px + 1.5625vw);*/
+/* padding-left: calc(8px + 1.5625vw);*/
 }
 
 /*div {*/
@@ -447,13 +468,8 @@ p {
 /* padding-left: calc(8px + 1.5625vw);*/
 /*}*/
 
-.rss {
- padding-right: calc(8px + 1.5625vw);
- padding-left: calc(8px + 1.5625vw);
-}
-
 .quote {
- padding-top: 2.2vw;
+ padding-top: 3.7vw;
  padding-bottom: 1.5vw;
  padding-right: calc(8px + 1.5625vw);
  padding-left: calc(8px + 1.5625vw);
@@ -488,13 +504,18 @@ img .blink {
  display: inline-block;
  padding-left: 1.5625vw;
  padding-right: 1.5625vw;
- text-align: left;
 }
 
 /* For TAGLIST.HTML */
 .taglist {
  text-align: center;
  clear: both;
+}
+
+ ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* For NEXTPREV.HTML */
