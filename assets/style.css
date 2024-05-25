@@ -447,13 +447,13 @@ p {
 /* padding-left: calc(8px + 1.5625vw);*/
 /*}*/
 
-img .rss {
+.rss {
  padding-right: calc(8px + 1.5625vw);
  padding-left: calc(8px + 1.5625vw);
 }
 
 .quote {
- padding-top: 1.5vw;
+ padding-top: 2.2vw;
  padding-bottom: 1.5vw;
  padding-right: calc(8px + 1.5625vw);
  padding-left: calc(8px + 1.5625vw);

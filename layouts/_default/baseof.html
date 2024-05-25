@@ -18,6 +18,9 @@
  <meta name="theme-color" content="#7d8618">
  <meta charset="utf-8">
 </head>
+<header>
+ <h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+</header>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
