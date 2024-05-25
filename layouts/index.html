@@ -6,10 +6,8 @@
    </em>
   </p>
 </header>
-{{ $cat_script := resources.Get "/cat.js" | minify }}
-{{ "&#8260;&#8260; @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11" | safeHTML }}
+{{ $cat_script := resources.Get "/cat.js" }}
 <script src="{{ $cat_script.Permalink }}"></script>
-{{ :&#8260;&#8260; @license-end" | safeHTML }}
   <h1 style="text-align:left">
    Saygo
   </h1>
