@@ -16,13 +16,10 @@
  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7d8618">
  <meta name="msapplication-TileColor" content="#7d8618">
  <meta name="theme-color" content="#7d8618">
-
-
  <meta charset="utf-8">
 </head>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
-<br>
 <main>
 <article>
 {{ block "main" . }}
@@ -36,7 +33,7 @@
 {{ block "footer" . }}
  {{- if .Param "showrss" }}
  <br>
- <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" alt="RSS Feed" title="Subscribe via RSS for updates.">
+ <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" class="rss" alt="RSS Feed" title="Subscribe via RSS for updates.">
  </a>
  {{ end }}
 {{ end }}
