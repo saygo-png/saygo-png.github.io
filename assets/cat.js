@@ -1,20 +1,16 @@
 // oneko.js: https://github.com/adryd325/oneko.js
-//Copyright © 2022 adryd
-//Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-//The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-//THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(function cat() {
+(function oneko() {
   const isReducedMotion =
     window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
     window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
   if (isReducedMotion) return;
 
-  const kittyEl = document.createElement("div");
+  const nekoEl = document.createElement("div");
 
-  let kittyPosX = 32;
-  let kittyPosY = 32;
+  let nekoPosX = 32;
+  let nekoPosY = 32;
 
   let mousePosX = 0;
   let mousePosY = 0;
@@ -24,7 +20,7 @@
   let idleAnimation = null;
   let idleAnimationFrame = 0;
 
-  const kittySpeed = 10;
+  const nekoSpeed = 10;
   const spriteSets = {
     idle: [[-3, -3]],
     alert: [[-7, -3]],
@@ -89,25 +85,25 @@
   };
 
   function init() {
-    kittyEl.id = "cat";
-    kittyEl.ariaHidden = true;
-    kittyEl.style.width = "32px";
-    kittyEl.style.height = "32px";
-    kittyEl.style.position = "fixed";
-    kittyEl.style.pointerEvents = "auto";
-    kittyEl.style.imageRendering = "pixelated";
-    kittyEl.style.left = `${kittyPosX - 16}px`;
-    kittyEl.style.top = `${kittyPosY - 16}px`;
-    kittyEl.style.zIndex = Number.MAX_VALUE;
+    nekoEl.id = "oneko";
+    nekoEl.ariaHidden = true;
+    nekoEl.style.width = "32px";
+    nekoEl.style.height = "32px";
+    nekoEl.style.position = "fixed";
+    nekoEl.style.pointerEvents = "none";
+    nekoEl.style.imageRendering = "pixelated";
+    nekoEl.style.left = `${nekoPosX - 16}px`;
+    nekoEl.style.top = `${nekoPosY - 16}px`;
+    nekoEl.style.zIndex = Number.MAX_VALUE;
 
-    let kittyFile = "../cat.gif"
+    let nekoFile = "../cat.gif"
     const curScript = document.currentScript
     if (curScript && curScript.dataset.cat) {
-      kittyFile = curScript.dataset.cat
+      nekoFile = curScript.dataset.cat
     }
-    kittyEl.style.backgroundImage = `url(${kittyFile})`;
+    nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
-    document.body.appendChild(kittyEl);
+    document.body.appendChild(nekoEl);
 
     document.addEventListener("mousemove", function (event) {
       mousePosX = event.clientX;
@@ -120,8 +116,8 @@
   let lastFrameTimestamp;
 
   function onAnimationFrame(timestamp) {
-    // Stops execution if the kitty element is removed from DOM
-    if (!kittyEl.isConnected) {
+    // Stops execution if the neko element is removed from DOM
+    if (!nekoEl.isConnected) {
       return;
     }
     if (!lastFrameTimestamp) {
@@ -136,7 +132,7 @@
 
   function setSprite(name, frame) {
     const sprite = spriteSets[name][frame % spriteSets[name].length];
-    kittyEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
+    nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
   }
 
   function resetIdleAnimation() {
@@ -154,21 +150,21 @@
       idleAnimation == null
     ) {
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
-      if (kittyPosX < 32) {
+      if (nekoPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
       }
-      if (kittyPosY < 32) {
+      if (nekoPosY < 32) {
         avalibleIdleAnimations.push("scratchWallN");
       }
-      if (kittyPosX > window.innerWidth - 32) {
+      if (nekoPosX > window.innerWidth - 32) {
         avalibleIdleAnimations.push("scratchWallE");
       }
-      if (kittyPosY > window.innerHeight - 32) {
+      if (nekoPosY > window.innerHeight - 32) {
         avalibleIdleAnimations.push("scratchWallS");
       }
       idleAnimation =
         avalibleIdleAnimations[
-        Math.floor(Math.random() * avalibleIdleAnimations.length)
+          Math.floor(Math.random() * avalibleIdleAnimations.length)
         ];
     }
 
@@ -200,56 +196,13 @@
     idleAnimationFrame += 1;
   }
 
-  function explodeHearts() {
-    const parent = kittyEl.parentElement;
-    const rect = kittyEl.getBoundingClientRect();
-    const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const centerX = rect.left + rect.width / 2 + scrollLeft;
-    const centerY = rect.top + rect.height / 2 + scrollTop;
-
-    for (let i = 0; i < 10; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '❤';
-      const offsetX = (Math.random() - 0.5) * 50;
-      const offsetY = (Math.random() - 0.5) * 50;
-      heart.style.left = `${centerX + offsetX - 16}px`;
-      heart.style.top = `${centerY + offsetY - 16}px`;
-      heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
-      parent.appendChild(heart);
-
-      setTimeout(() => {
-        parent.removeChild(heart);
-      }, 1000);
-    }
-  }
-
-  const style = document.createElement('style');
-  style.innerHTML = `
-    @keyframes heartBurst {
-     0% { transform: scale(0); opacity: 1; }
-     100% { transform: scale(1); opacity: 0; }
-    }
-    .heart {
-     position: absolute;
-     font-size: 2em;
-     animation: heartBurst 1s ease-out;
-     animation-fill-mode: forwards;
-     color: #ab9df2;
-    }
-   `;
-
-  document.head.appendChild(style);
-  kittyEl.addEventListener('click', explodeHearts);
-
   function frame() {
     frameCount += 1;
-    const diffX = kittyPosX - mousePosX;
-    const diffY = kittyPosY - mousePosY;
+    const diffX = nekoPosX - mousePosX;
+    const diffY = nekoPosY - mousePosY;
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
-    if (distance < kittySpeed || distance < 48) {
+    if (distance < nekoSpeed || distance < 48) {
       idle();
       return;
     }
@@ -272,14 +225,14 @@
     direction += diffX / distance < -0.5 ? "E" : "";
     setSprite(direction, frameCount);
 
-    kittyPosX -= (diffX / distance) * kittySpeed;
-    kittyPosY -= (diffY / distance) * kittySpeed;
+    nekoPosX -= (diffX / distance) * nekoSpeed;
+    nekoPosY -= (diffY / distance) * nekoSpeed;
 
-    kittyPosX = Math.min(Math.max(16, kittyPosX), window.innerWidth - 16);
-    kittyPosY = Math.min(Math.max(16, kittyPosY), window.innerHeight - 16);
+    nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
+    nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
 
-    kittyEl.style.left = `${kittyPosX - 16}px`;
-    kittyEl.style.top = `${kittyPosY - 16}px`;
+    nekoEl.style.left = `${nekoPosX - 16}px`;
+    nekoEl.style.top = `${nekoPosY - 16}px`;
   }
 
   init();
