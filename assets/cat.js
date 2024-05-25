@@ -100,7 +100,7 @@
     kittyEl.style.top = `${kittyPosY - 16}px`;
     kittyEl.style.zIndex = Number.MAX_VALUE;
 
-    let kittyFile = "../static/cat.gif"
+    let kittyFile = "../cat.gif"
     const curScript = document.currentScript
     if (curScript && curScript.dataset.cat) {
       kittyFile = curScript.dataset.cat
