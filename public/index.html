@@ -1,4 +1,25 @@
-{{ define "main" -}}
+<!DOCTYPE html>
+<html style="background-color:#161616" lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.126.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+ <title>Saygo&#39;s lair</title>
+ <link rel='alternate' type='application/rss+xml' title="Saygo&#39;s lair RSS" href='/index.xml'>
+ 
+ <link rel="stylesheet" href="http://localhost:1313/style.min.6935021941851477fd6f3f13b74f9bd5.css">
+ <link rel="icon" href="/favicon.ico">
+ <meta name="description" content="">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="robots" content="index, follow">
+ <meta name="msapplication-TileColor" content="#7d8618">
+ <meta name="theme-color" content="#7d8618">
+ <meta charset="utf-8">
+</head>
+<body>
+<main>
+<article>
+<header>
+ <h1 id="tag_Saygo&#39;s lair"></h1>
+</header>
 <header>
   <p class="quote">
     <span style="font-size:3.1vw;">☭🥥🌴☭🥥🌴☭🥥🌴☭🥥🌴☭🥥🌴</span><br>
@@ -9,8 +30,8 @@
   </p>
  <img class="center" src="/coconut-pill.webp" alt="coconut-pill.webp" width="500" height="328">
 </header>
-{{ $cat_script := resources.Get "/cat.js" }}
-<script src="{{ $cat_script.Permalink }}"></script>
+
+<script src="http://localhost:1313/cat.js"></script>
   <h1 style="text-align:left">
    Saygo
   </h1>
@@ -47,22 +68,33 @@
    Blog
   </h1>
 <div class="blog">
-<!--<div class="text-center">-->
-<!-- <div class="display-inline">-->
+
+
 <ul style="text-align:left">
-{{- range.Pages }}
-<li style="text-align:left">
- {{- if .Param "datesinlist" }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; {{ end -}}
- <a href="{{ .RelPermalink }}">{{ .Title }}</a>
- {{- if .Param "authorsinlist" }}
- {{ with .Params.authors }}
-  by
-  {{ delimit . ", " " and " }}
- {{end}}
- {{ end -}}
-</li>
-{{- end }}
+<li style="text-align:left"><time datetime="2024-02-11T00:00:00Z">2024 Feb 11</time> &ndash; <a href="/predictions/">Year 2050 predictions</a>
+ 
+ </li>
+<li style="text-align:left"><time datetime="2024-02-03T08:34:21&#43;01:00">2024 Feb 03</time> &ndash; <a href="/migrating_to_hugo/">Migrating to Hugo and creating a blog</a>
+ 
+ </li>
 </ul>
  </div>
-<!--</div>-->
-{{- end }}
+
+</article>
+</main>
+ <footer>
+        <div class=taglist>
+        </div>
+
+ 
+  <div class="text-center">
+   <br>
+   <a href="/index.xml"><img src="/rss.svg" style="max-height:2em" class="rss" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+   <br>
+  
+   <h3> <a href="http://localhost:1313/">http://localhost:1313/ </h3>
+  </div>
+ 
+</footer>
+</body>
+</html>
