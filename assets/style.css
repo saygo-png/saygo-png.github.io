@@ -381,8 +381,8 @@ template {
 html {
  background-color: #282828;
  color: #ebdbb2;
- font-size: 2.1vw;
- font-size: calc(16px + 0.390625vw);
+ font-size: 1.9vw;
+ font-size: calc(15px + 0.390625vw);
 }
 
 body {
@@ -398,7 +398,7 @@ a {
 }
 
 a:visited {
- color: #d79921;
+ color: #d3869b;
 }
 
 .blog {
