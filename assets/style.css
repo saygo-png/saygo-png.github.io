@@ -379,18 +379,18 @@ template {
 }
 
 html {
- background-color: #161616;
- color: #b8bb26;
+ background-color: #282828;
+ color: #ebdbb2;
  font-size: 2.1vw;
  font-size: calc(16px + 0.390625vw);
 }
 
 body {
- background-color: #161616;
+ background-color: #282828;
 }
 
 body {
- color: #b8bb26;
+ color: #ebdbb2;
 }
 
 a {
@@ -407,6 +407,11 @@ a:visited {
  padding-left: 15vw;
 /* padding-right: calc(8px + 1.5625vw);*/
 /* padding-left: calc(8px + 1.5625vw);*/
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #b8bb26;
 }
 
 p,
@@ -434,9 +439,6 @@ h2 {
 }
 }
 
-/*h1 {*/
-/* padding-bottom: calc(1.4625vw);*/
-/*}*/
 p {
  padding-bottom: calc(2vw);
 }
@@ -458,15 +460,7 @@ h2 {
 
 .notes {
  text-align: right;
-/* padding-right: calc(8px + 1.5625vw);*/
-/* padding-left: calc(8px + 1.5625vw);*/
 }
-
-/*div {*/
-/* text-align: center;*/
-/* padding-right: calc(8px + 1.5625vw);*/
-/* padding-left: calc(8px + 1.5625vw);*/
-/*}*/
 
 .quote {
  padding-top: 3.7vw;
@@ -476,26 +470,26 @@ h2 {
  text-align: center;
 }
 
-.blink {
- animation: blinker 0.7s step-start infinite;
-}
-
 .center {
  display: block;
  margin-left: auto;
  margin-right: auto;
 }
 
-img .blink {
- animation: blinker 1s step-start infinite;
+.kom {
+ float: left;
+ display: block;
+ padding-left: 15vw;
+ padding-top: 2vw;
 }
 
-@keyframes blinker {
- 50% {
-  opacity: 0;
- }
+@media screen and (max-width: 1000px) {
+.kom {
+ float: left;
+ display: block;
 }
 
+}
 .text-center {
  text-align: center;
 }
@@ -518,6 +512,11 @@ img .blink {
   margin: 0;
 }
 
+#title {
+padding-bottom:1.5625vw;
+padding-top:1.5625vw;
+}
+
 /* For NEXTPREV.HTML */
 #nextprev {
  /* The container for both the previous and next articles. */
@@ -526,11 +525,13 @@ img .blink {
 #prevart {
  float: left;
  text-align: left;
+ padding-left:1.5625vw;
 }
 
 #nextart {
  float: right;
  text-align: right;
+ padding-right:1.5625vw;
 }
 
 #nextart,
