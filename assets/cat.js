@@ -215,7 +215,6 @@
       heart.style.left = `${centerX + offsetX - 16}px`;
       heart.style.top = `${centerY + offsetY - 16}px`;
       heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
-      parent.appendChild(heart);
     }
   }
 
