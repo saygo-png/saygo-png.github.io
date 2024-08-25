@@ -147,10 +147,8 @@
   function idle() {
     idleTime += 1;
 
-    // every ~ 20 seconds
     if (
       idleTime > 10 &&
-      Math.floor(Math.random() * 200) == 0 &&
       idleAnimation == null
     ) {
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
@@ -218,10 +216,6 @@
       heart.style.top = `${centerY + offsetY - 16}px`;
       heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
       parent.appendChild(heart);
-
-      setTimeout(() => {
-        parent.removeChild(heart);
-      }, 1000);
     }
   }
 
