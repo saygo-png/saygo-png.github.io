@@ -216,6 +216,11 @@
       heart.style.top = `${centerY + offsetY - 16}px`;
       heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
     }
+      parent.appendChild(heart);
+
+      setTimeout(() => {
+        parent.removeChild(heart);
+      }, 500);
   }
 
   const style = document.createElement('style');
@@ -227,7 +232,7 @@
     .heart {
      position: absolute;
      font-size: 2em;
-     animation: heartBurst 1s ease-out;
+     animation: heartBurst 0.5s ease-out;
      animation-fill-mode: forwards;
      color: #ab9df2;
     }
