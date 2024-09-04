@@ -147,10 +147,8 @@
   function idle() {
     idleTime += 1;
 
-    // every ~ 20 seconds
     if (
       idleTime > 10 &&
-      Math.floor(Math.random() * 200) == 0 &&
       idleAnimation == null
     ) {
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
@@ -217,12 +215,12 @@
       heart.style.left = `${centerX + offsetX - 16}px`;
       heart.style.top = `${centerY + offsetY - 16}px`;
       heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+    }
       parent.appendChild(heart);
 
       setTimeout(() => {
         parent.removeChild(heart);
-      }, 1000);
-    }
+      }, 500);
   }
 
   const style = document.createElement('style');
@@ -234,7 +232,7 @@
     .heart {
      position: absolute;
      font-size: 2em;
-     animation: heartBurst 1s ease-out;
+     animation: heartBurst 0.5s ease-out;
      animation-fill-mode: forwards;
      color: #ab9df2;
     }
