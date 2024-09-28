@@ -8,6 +8,11 @@ bin-release/
 # Other files and folders
 .settings/
 
+# Nix devenv
+.direnv/
+.devenv/
+.pre-commit-config.yaml
+
 # Executables
 *.swf
 *.air
