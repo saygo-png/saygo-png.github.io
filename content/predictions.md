@@ -15,4 +15,3 @@ In terms of technology, AI will be commonplace, but it will very centralized wit
 For some easy points, physical cash will no longer be used, nearly all cars will be electric, solar panels will be commonplace.
 
 Thats it, hopefully i stay alive to report back :D
-
