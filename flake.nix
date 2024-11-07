@@ -26,11 +26,6 @@
         # system.
         devenv.shells.default = {
           # https://devenv.sh/reference/options/
-          pre-commit.hooks = {
-            actionlint.enable = true;
-            hunspell.enable = true;
-            markdownlint.enable = true;
-          };
           processes = {
             hugo.exec = "hugo server --disableFastRender --noHTTPCache --ignoreCache";
           };
