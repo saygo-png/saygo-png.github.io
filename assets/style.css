@@ -476,20 +476,6 @@ h2 {
  margin-right: auto;
 }
 
-.kom {
- float: left;
- display: block;
- padding-left: 15vw;
- padding-top: 2vw;
-}
-
-@media screen and (max-width: 1000px) {
-.kom {
- float: left;
- display: block;
-}
-
-}
 .text-center {
  text-align: center;
 }
