@@ -89,6 +89,7 @@ h2 {
  padding-right: calc(8px + 1.5625vw);
  padding-left: calc(8px + 1.5625vw);
  text-align: center;
+ font-style: italic;
 }
 
 .center {
