@@ -1,2 +1,1 @@
-
 minimal personal website
