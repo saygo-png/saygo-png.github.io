@@ -1,12 +1,11 @@
 name: uliczne-boids
-root: ~/Desktop/Sync/art/diploma/projektowanie-graficzne/kod/1-uliczne-boids
-
+root: /home/samsepi0l/Sync/builds/website
 # start session with this window open
 startup_window: editor
 
 windows:
   - editor: nvim .
-  - server: deno task dev
+  - server: hugo serve
 
 # Note that the pre and post options have been deprecated and will be replaced by
 # project hooks.
