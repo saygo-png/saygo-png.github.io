@@ -100,10 +100,10 @@
     kittyEl.style.top = `${kittyPosY - 16}px`;
     kittyEl.style.zIndex = Number.MAX_VALUE;
 
-    let kittyFile = "./cat.gif"
-    const curScript = document.currentScript
+    let kittyFile = "./cat.gif";
+    const curScript = document.currentScript;
     if (curScript && curScript.dataset.cat) {
-      kittyFile = curScript.dataset.cat
+      kittyFile = curScript.dataset.cat;
     }
     kittyEl.style.backgroundImage = `url(${kittyFile})`;
 
@@ -128,8 +128,8 @@
       lastFrameTimestamp = timestamp;
     }
     if (timestamp - lastFrameTimestamp > 100) {
-      lastFrameTimestamp = timestamp
-      frame()
+      lastFrameTimestamp = timestamp;
+      frame();
     }
     window.requestAnimationFrame(onAnimationFrame);
   }
@@ -147,10 +147,7 @@
   function idle() {
     idleTime += 1;
 
-    if (
-      idleTime > 10 &&
-      idleAnimation == null
-    ) {
+    if (idleTime > 10 && idleAnimation == null) {
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
       if (kittyPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
@@ -166,7 +163,7 @@
       }
       idleAnimation =
         avalibleIdleAnimations[
-        Math.floor(Math.random() * avalibleIdleAnimations.length)
+          Math.floor(Math.random() * avalibleIdleAnimations.length)
         ];
     }
 
@@ -207,23 +204,23 @@
     const centerY = rect.top + rect.height / 2 + scrollTop;
 
     for (let i = 0; i < 10; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '❤';
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤";
       const offsetX = (Math.random() - 0.5) * 50;
       const offsetY = (Math.random() - 0.5) * 50;
       heart.style.left = `${centerX + offsetX - 16}px`;
       heart.style.top = `${centerY + offsetY - 16}px`;
       heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
     }
-      parent.appendChild(heart);
+    parent.appendChild(heart);
 
-      setTimeout(() => {
-        parent.removeChild(heart);
-      }, 500);
+    setTimeout(() => {
+      parent.removeChild(heart);
+    }, 500);
   }
 
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.innerHTML = `
     @keyframes heartBurst {
      0% { transform: scale(0); opacity: 1; }
@@ -239,7 +236,7 @@
    `;
 
   document.head.appendChild(style);
-  kittyEl.addEventListener('click', explodeHearts);
+  kittyEl.addEventListener("click", explodeHearts);
 
   function frame() {
     frameCount += 1;
