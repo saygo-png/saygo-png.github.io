@@ -1,4 +1,4 @@
-@import url("normalize.css");
+@import "normalize.css";
 html {
  background-color: #282828;
  color: #ebdbb2;
