@@ -6,16 +6,8 @@ html {
  font-size: calc(15px + 0.390625vw);
 }
 
-body {
- background-color: #282828;
-}
-
-body {
- color: #ebdbb2;
-}
-
 a {
- color: #fabd2f;
+ color: #83a598;
 }
 
 a:visited {
@@ -26,8 +18,6 @@ a:visited {
  text-align: left;
  padding-right: 15vw;
  padding-left: 15vw;
-/* padding-right: calc(8px + 1.5625vw);*/
-/* padding-left: calc(8px + 1.5625vw);*/
 }
 
 h1, h2, h3, h4, h5, h6
@@ -55,8 +45,6 @@ h2 {
  text-align: left;
  padding-right: 15vw;
  padding-left: 15vw;
-/* padding-right: calc(8px + 1.5625vw);*/
-/* padding-left: calc(8px + 1.5625vw);*/
 }
 }
 
@@ -74,11 +62,6 @@ p {
  margin: 0px;
 }
 
-p,
-h1,
-h2 {
-}
-
 .notes {
  text-align: right;
 }
@@ -90,12 +73,6 @@ h2 {
  padding-left: calc(8px + 1.5625vw);
  text-align: center;
  font-style: italic;
-}
-
-.center {
- display: block;
- margin-left: auto;
- margin-right: auto;
 }
 
 .text-center {
@@ -126,10 +103,6 @@ padding-top:1.5625vw;
 }
 
 /* For NEXTPREV.HTML */
-#nextprev {
- /* The container for both the previous and next articles. */
-}
-
 #prevart {
  float: left;
  text-align: left;
