@@ -1,58 +1,55 @@
 {{ define "main" -}}
+
   <header>
     <p class="quote">
-      “We were both wrong, not equally wrong.<br />
-      You were at least six more wronger than me”.
+      „We were both wrong, not equally wrong.<br />
+      You were at least six more wronger than me”
     </p>
   </header>
-  {{/* prettier-ignore-start */}}
-  <p class="notes">
-    Contact:
-    <br><b>Discord: saygo.temp</b>
+
+  <p>
+    <b>Contact:</b>
+    <br>Discord: saygo.temp
     <br>E-Mail: saygo.mail@proton.me
     <br>
-    <br>Inactive backups:
+    <br><b>Inactive backups:</b>
     <br>Matrix: @saygo.2:tchncs.de
-    <br>Matrix: @saygo:hackliberty.org
     <br>XMPP: saygo@nixnet.services
     <br>
-    <br>Links:
-    <br>Arstation: <a href="https://www.artstation.com/saygo" target="_blank">artstation.com/saygo</a>
-    <br>Archive: <a href="https://archive.org/details/@saygo777" target="_blank">archive.org/details/@saygo777</a>
-    <br>YouTube: <a href="https://www.youtube.com/@saygo-png " target="_blank">youtube.com/@saygo-png </a>
+    <br><b>Links:</b>
     <br>Github: <a href="https://github.com/saygo-png" target="_blank">github.com/saygo-png</a>
-    <br>Game i worked on: <a href="https://aejjee.itch.io/samnslime" target="_blank">aejjee.itch.io/samnslime</a>
+    <br>Arstation: <a href="https://www.artstation.com/saygo" target="_blank">artstation.com/saygo</a>
+    <br>YouTube: <a href="https://www.youtube.com/@saygo-png " target="_blank">youtube.com/@saygo-png </a>
+    <br>Archive: <a href="https://archive.org/details/@saygo777" target="_blank">archive.org/details/@saygo777</a>
+      <br>Game i made art for: <a href="https://aejjee.itch.io/samnslime" target="_blank">aejjee.itch.io/samnslime</a>
   </p>
-  {{/* prettier-ignore-end */}}
+
   {{ $cat_script := resources.Get "/cat.js" }}
   <script src="{{ $cat_script.Permalink }}"></script>
-  <h1 style="text-align:left">Saygo</h1>
+
+  <h1>Saygo</h1>
   <p>
-    I'm a Polish artist, I enjoy software and Linux. Computers are an
-    inspiration for my artworks as well as my medium of choice.
+    I'm polish and I enjoy video games, especially competitive ones like Overwatch 2 (peaked in masters). Down to find more people to play with, though I'm negative, pessimistic and emotionally distant.
+    I'm learning Finnish and dream of living in Finland one day.
+    I have <a href="https://en.wikipedia.org/wiki/Schizoid_personality_disorder">schizoid personality disorder</a> (not schizophrenia) and barely walk outside. Sometimes I write bad blog posts here.
   </p>
-  <h2 style="text-align:left">Art</h2>
+
+  <h2>Art</h2>
   <p>
-    I love the unique qualities of traditional art - how watercolors granulate,
-    how paint strokes look, and how paper feels. But for some reason, we don't
-    appreciate digital art's unique qualities in the same way. Instead, people
-    often dismiss digital effects as cheap or fake. I think that's wrong, which
-    is why I proudly include digital elements in my work. They're just as worthy
-    of appreciation. See my works
-    <a href="https://www.artstation.com/saygo">here.</a>
+    I was once passionate about art but then I went to artschool, or maybe my personality disorder got the best of me.
+    <a href="https://www.artstation.com/saygo">Here</a> is my dead ArtStation profile.
   </p>
-  <h2 style="text-align:left">Software</h2>
+
+  <h2>Software</h2>
   <p>
-    I use NixOS and create artwork using Krita, Inkscape, Blender and various
-    code libraries. Click <a href="/desktop.webp" target="_blank">here</a> to
-    see my desktop, dotfiles are available on my
-    <a href="https://github.com/saygo-png" target="_blank">github</a> profile.
+    I despise all proprietary software. I use NixOS and hate it, dotfiles are available on my
+    <a href="https://github.com/saygo-png" target="_blank">github</a> profile. Trying to learn programming but I'm bad at it right now. I'm most interested in functional languages like Haskell and Nix.
   </p>
-  <h1 style="text-align:left">Blog</h1>
-  <div class="blog">
-    <ul style="text-align:left">
+
+  <h2>Blog</h2>
+    <ul>
       {{- range.Pages }}
-        <li style="text-align:left">
+        <li>
           {{- if .Param "datesinlist" }}
             <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}"
               >{{ .Date.Format "2006 Jan 02" }}</time
@@ -69,5 +66,4 @@
         </li>
       {{- end }}
     </ul>
-  </div>
 {{- end }}
