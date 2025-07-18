@@ -69,3 +69,13 @@ bower_components
 # AWS stuff for publishing static files
 .aws-credentials.json
 .awspublish*
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
