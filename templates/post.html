@@ -1,0 +1,14 @@
+<div class="purePadding"></div>
+<section class="header">
+  Posted on $date$ $if(author)$ by $author$ $endif$
+</section>
+<h1 class="">$title$</h1>
+<section>$body$</section>
+<div class="navigationButtons">
+  $if(nextPost)$
+  <a id="nextPost" href="$nextPost$">next post</a>
+  $endif$
+  $if(prevPost)$
+  <a id="previousPost" href="$prevPost$">previous post</a>
+  $endif$
+</div>
