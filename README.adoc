@@ -1,3 +1,3 @@
 = My blog built with Hakyll
 
-The next/previous post functionality is "borrowed" from https://github.com/rgoulter/my-hakyll-blog/tree/master
+The next/previous post functionality is "borrowed" from https://github.com/rgoulter/my-hakyll-blog
