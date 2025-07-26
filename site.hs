@@ -33,7 +33,14 @@ main = hakyll $ do
       (nextPostHM, prevPostHM) = buildAdjacentPostsHashMap sortedPosts
 
   match "posts/*" $ do
-    route $ foldl1 composeRoutes [gsubRoute "pages/" $ const "", setExtension "html", removeDatePrefix]
+    route $
+      foldl1
+        composeRoutes
+        [ gsubRoute "pages/" $ const ""
+        , removeDatePrefix
+        , setExtension ""
+        , dirWithIndexHtml
+        ]
     compile $ do
       let postContextBut =
             field "nextPost" (lookupPostUrl nextPostHM)
@@ -52,7 +59,7 @@ main = hakyll $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" postCtx (return posts)
-              <> defaultContext
+              <> siteContext
 
       getResourceBody
         >>= applyAsTemplate indexCtx
@@ -71,10 +78,32 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
-    `mappend` defaultContext
+    `mappend` siteContext
+
+siteContext :: Context String
+siteContext = field "url" clean <> defaultContext
+  where
+    clean item = do
+      path <- getRoute (itemIdentifier item)
+      case path of
+        Nothing -> noResult "no route for identifier"
+        Just s -> pure . removeIndexSuffix . toUrl $ s
 
 removeDatePrefix :: Routes
 removeDatePrefix = customRoute $ intercalate "-" . drop 3 . splitAll "-" . toFilePath
+
+-- https://chungyc.org/article/technical/website/extensionless
+removeIndexSuffix :: String -> String
+removeIndexSuffix url@('/' : _)  -- only clean up local URLs
+  | Nothing <- prefix = url  -- does not end with index.html
+  | Just s <- prefix = s  -- clean up index.html from URL
+  where
+    prefix = needlePrefix "index.html" url
+removeIndexSuffix url = url
+
+dirWithIndexHtml :: Routes
+dirWithIndexHtml = customRoute $ \i ->
+  let path = toFilePath i in path <> "/" <> "index.html"
 
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration =
@@ -103,7 +132,7 @@ lookupPostUrl :: AdjPostHM -> Item String -> Compiler String
 lookupPostUrl hm post =
   let ident = itemIdentifier post
       ident' = HM.lookup ident hm
-   in (fmap (maybe empty toUrl) . maybe empty getRoute) ident'
+   in (fmap (maybe empty (removeIndexSuffix . toUrl)) . maybe empty getRoute) ident'
 
 sortIdentifiersByDate :: [Identifier] -> [Identifier]
 sortIdentifiersByDate = sortBy (comparing (Down . parseDate))
