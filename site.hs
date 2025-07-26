@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Applicative (Alternative (..))
-import qualified Data.HashMap.Strict as HM
+import Data.HashMap.Strict qualified as HM
 import Data.Hashable (Hashable, hashWithSalt)
 import Data.List (findIndex, intercalate, isPrefixOf, sortBy, tails)
 import Data.Maybe (fromMaybe)
@@ -10,7 +10,9 @@ import Data.Ord (Down (Down), comparing)
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (defaultTimeLocale, parseTimeM)
 import Hakyll
-import System.FilePath (takeFileName)
+import Path qualified as P
+
+-- import System.FilePath (takeFileName)
 
 postsGlob :: Pattern
 postsGlob = "posts/**.md"
@@ -31,12 +33,12 @@ main = hakyll $ do
       (nextPostHM, prevPostHM) = buildAdjacentPostsHashMap sortedPosts
 
   match "posts/*" $ do
-    route $ setExtension "html"
+    route $ foldl1 composeRoutes [gsubRoute "pages/" $ const "", setExtension "html", removeDatePrefix]
     compile $ do
       let postContextBut =
             field "nextPost" (lookupPostUrl nextPostHM)
-              `mappend` postCtx
-              `mappend` field "prevPost" (lookupPostUrl prevPostHM)
+              <> postCtx
+              <> field "prevPost" (lookupPostUrl prevPostHM)
 
       pandocCompiler
         >>= loadAndApplyTemplate "templates/post.html" postContextBut
@@ -50,7 +52,7 @@ main = hakyll $ do
       posts <- recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" postCtx (return posts)
-              `mappend` defaultContext
+              <> defaultContext
 
       getResourceBody
         >>= applyAsTemplate indexCtx
@@ -62,7 +64,7 @@ main = hakyll $ do
   create ["atom.xml"] $ do
     route idRoute
     compile $ do
-      let feedCtx = postCtx `mappend` bodyField "description"
+      let feedCtx = postCtx <> bodyField "description"
       posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
       renderAtom myFeedConfiguration feedCtx posts
 
@@ -70,6 +72,9 @@ postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
     `mappend` defaultContext
+
+removeDatePrefix :: Routes
+removeDatePrefix = customRoute $ intercalate "-" . drop 3 . splitAll "-" . toFilePath
 
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration =
@@ -104,8 +109,9 @@ sortIdentifiersByDate :: [Identifier] -> [Identifier]
 sortIdentifiersByDate = sortBy (comparing (Down . parseDate))
   where
     parseDate ident =
-      let filename = takeFileName $ toFilePath ident
-          dateStr = intercalate "-" $ take 3 $ splitAll "-" filename
+      let path = fromMaybe (error "Invalid path") $ P.parseRelFile $ toFilePath ident
+          filename = P.filename path
+          dateStr = intercalate "-" . take 3 $ splitAll "-" $ P.fromRelFile filename
        in case parseTimeM True defaultTimeLocale "%Y-%m-%d" dateStr of
-            Nothing -> error $ "Failed to parse date from filename: " ++ filename
+            Nothing -> error $ "Failed to parse date from path: " ++ P.fromRelFile path
             Just time -> time :: UTCTime
