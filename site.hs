@@ -1,18 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 import Control.Applicative (Alternative (..))
 import Data.HashMap.Strict qualified as HM
 import Data.Hashable (Hashable, hashWithSalt)
-import Data.List (findIndex, intercalate, isPrefixOf, sortBy, tails)
+import Data.List (intercalate, sortBy)
 import Data.Maybe (fromMaybe)
-import Data.Monoid (mappend)
 import Data.Ord (Down (Down), comparing)
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (defaultTimeLocale, parseTimeM)
 import Hakyll
 import Path qualified as P
-
--- import System.FilePath (takeFileName)
 
 postsGlob :: Pattern
 postsGlob = "posts/**.md"
@@ -23,9 +21,9 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  match "css/*" $ do
-    route idRoute
-    compile compressCssCompiler
+  -- No route because we inline it with a context
+  -- We just need to make it available.
+  match "css/*" $ compile getResourceBody
 
   allPosts <- getMatches postsGlob
   let sortedPosts = sortIdentifiersByDate allPosts
@@ -81,7 +79,10 @@ postCtx =
     `mappend` siteContext
 
 siteContext :: Context String
-siteContext = field "url" clean <> defaultContext
+siteContext =
+  field "url" clean
+    <> inlineCssContext
+    <> defaultContext
   where
     clean item = do
       path <- getRoute (itemIdentifier item)
@@ -89,14 +90,17 @@ siteContext = field "url" clean <> defaultContext
         Nothing -> noResult "no route for identifier"
         Just s -> pure . removeIndexSuffix . toUrl $ s
 
+    inlineCssContext = field "inlineCss" $ \_ ->
+      compressCss <$> loadBody (fromFilePath "css/default.css")
+
 removeDatePrefix :: Routes
 removeDatePrefix = customRoute $ intercalate "-" . drop 3 . splitAll "-" . toFilePath
 
 -- https://chungyc.org/article/technical/website/extensionless
 removeIndexSuffix :: String -> String
-removeIndexSuffix url@('/' : _)  -- only clean up local URLs
-  | Nothing <- prefix = url  -- does not end with index.html
-  | Just s <- prefix = s  -- clean up index.html from URL
+removeIndexSuffix url@('/' : _) -- only clean up local URLs
+  | Nothing <- prefix = url -- does not end with index.html
+  | Just s <- prefix = s -- clean up index.html from URL
   where
     prefix = needlePrefix "index.html" url
 removeIndexSuffix url = url
