@@ -4,3 +4,4 @@ _site
 dist-newstyle
 .stack-work
 stack.yaml.lock
+result

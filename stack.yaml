@@ -1,4 +1,0 @@
-snapshot: lts-24.1
-allow-newer: true
-packages:
-- .

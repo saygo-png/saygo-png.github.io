@@ -9,6 +9,7 @@ import Data.Maybe (fromMaybe)
 import Data.Ord (Down (Down), comparing)
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (defaultTimeLocale, parseTimeM)
+import GHC.IO.Encoding qualified as E
 import Hakyll
 import Path qualified as P
 
@@ -16,62 +17,64 @@ postsGlob :: Pattern
 postsGlob = "posts/**.md"
 
 main :: IO ()
-main = hakyll $ do
-  match "assets/*" $ do
-    route idRoute
-    compile copyFileCompiler
+main = do
+  E.setLocaleEncoding E.utf8
+  hakyll $ do
+    match "assets/*" $ do
+      route idRoute
+      compile copyFileCompiler
 
-  -- No route because we inline it with a context
-  -- We just need to make it available.
-  match "css/*" $ compile getResourceBody
+    -- No route because we inline it with a context
+    -- We just need to make it available.
+    match "css/*" $ compile getResourceBody
 
-  allPosts <- getMatches postsGlob
-  let sortedPosts = sortIdentifiersByDate allPosts
-      -- build hashmap of prev/next posts
-      (nextPostHM, prevPostHM) = buildAdjacentPostsHashMap sortedPosts
+    allPosts <- getMatches postsGlob
+    let sortedPosts = sortIdentifiersByDate allPosts
+        -- build hashmap of prev/next posts
+        (nextPostHM, prevPostHM) = buildAdjacentPostsHashMap sortedPosts
 
-  match "posts/*" $ do
-    route $
-      foldl1
-        composeRoutes
-        [ gsubRoute "pages/" $ const ""
-        , removeDatePrefix
-        , setExtension ""
-        , dirWithIndexHtml
-        ]
-    compile $ do
-      let postContextBut =
-            field "nextPost" (lookupPostUrl nextPostHM)
-              <> postCtx
-              <> field "prevPost" (lookupPostUrl prevPostHM)
+    match "posts/*" $ do
+      route $
+        foldl1
+          composeRoutes
+          [ gsubRoute "pages/" $ const ""
+          , removeDatePrefix
+          , setExtension ""
+          , dirWithIndexHtml
+          ]
+      compile $ do
+        let postContextBut =
+              field "nextPost" (lookupPostUrl nextPostHM)
+                <> postCtx
+                <> field "prevPost" (lookupPostUrl prevPostHM)
 
-      pandocCompiler
-        >>= loadAndApplyTemplate "templates/post.html" postContextBut
-        >>= saveSnapshot "content"
-        >>= loadAndApplyTemplate "templates/default.html" postContextBut
-        >>= relativizeUrls
+        pandocCompiler
+          >>= loadAndApplyTemplate "templates/post.html" postContextBut
+          >>= saveSnapshot "content"
+          >>= loadAndApplyTemplate "templates/default.html" postContextBut
+          >>= relativizeUrls
 
-  match "index.html" $ do
-    route idRoute
-    compile $ do
-      posts <- recentFirst =<< loadAll "posts/*"
-      let indexCtx =
-            listField "posts" postCtx (return posts)
-              <> siteContext
+    match "index.html" $ do
+      route idRoute
+      compile $ do
+        posts <- recentFirst =<< loadAll "posts/*"
+        let indexCtx =
+              listField "posts" postCtx (return posts)
+                <> siteContext
 
-      getResourceBody
-        >>= applyAsTemplate indexCtx
-        >>= loadAndApplyTemplate "templates/default.html" indexCtx
-        >>= relativizeUrls
+        getResourceBody
+          >>= applyAsTemplate indexCtx
+          >>= loadAndApplyTemplate "templates/default.html" indexCtx
+          >>= relativizeUrls
 
-  match "templates/*" $ compile templateBodyCompiler
+    match "templates/*" $ compile templateBodyCompiler
 
-  create ["atom.xml"] $ do
-    route idRoute
-    compile $ do
-      let feedCtx = postCtx <> bodyField "description"
-      posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
-      renderAtom myFeedConfiguration feedCtx posts
+    create ["atom.xml"] $ do
+      route idRoute
+      compile $ do
+        let feedCtx = postCtx <> bodyField "description"
+        posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
+        renderAtom myFeedConfiguration feedCtx posts
 
 postCtx :: Context String
 postCtx =
