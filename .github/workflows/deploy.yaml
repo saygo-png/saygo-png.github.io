@@ -24,13 +24,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Hakyll
-        uses: stephenswat/hakyll-build-pages@v1.0.7
+      - uses: DeterminateSystems/determinate-nix-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build website
+        run: nix build --accept-flake-config --print-build-logs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./result
 
   deploy:
     environment:
