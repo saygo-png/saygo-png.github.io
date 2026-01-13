@@ -1,31 +1,5 @@
 {
   "nodes": {
-    "niceHaskell": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1765693627,
-        "narHash": "sha256-fkYZ5oGMqnhArn4ad2P/64CE3+dJRVjU4Uz13EnjQN4=",
-        "owner": "saygo-png",
-        "repo": "nice-nixpkgs-haskell",
-        "rev": "20b3a8ced4ee1c651df4fb10aadc673e2150ef0f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saygo-png",
-        "repo": "nice-nixpkgs-haskell",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1767313136,
@@ -60,7 +34,6 @@
     },
     "root": {
       "inputs": {
-        "niceHaskell": "niceHaskell",
         "nixpkgs": "nixpkgs",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"
