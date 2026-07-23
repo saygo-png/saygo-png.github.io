@@ -31,7 +31,7 @@ h6 {
 }
 
 p {
-  padding-bottom: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 a {
@@ -53,7 +53,32 @@ footer {
   font-style: italic;
 }
 
-ul {
+code {
+  background: #1d2021;
+  color: #d5c4a1;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #1d2021;
+  padding: 1em;
+  margin: 0 0 1.2em 0;
+  border-radius: 4px;
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.95em;
+}
+
+.plain-ul {
   list-style: none;
   margin: 0;
   padding: 0;
