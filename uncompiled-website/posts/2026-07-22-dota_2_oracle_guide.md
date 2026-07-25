@@ -110,6 +110,4 @@ Ghost Shroud can be purged.
 
 ### Shadow Shaman
 
-His hex and lazor cannot be cleansed
-
 Ally Shaman with available passive will not die during false promise even with a glowing orb. He will turn into a chicken at the end of it and live.
