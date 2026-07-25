@@ -2,6 +2,8 @@
 title: "Dota 2 Oracle in depth"
 ---
 
+last updated: 2026-07-25
+
 ## Content
 
 This post contains my findings and information from other sources on how Oracle in Dota 2 works and his weird interactions. I'll try to keep it updated. This is not a general guide. I'm an Oracle one-trick with 200+ games though I'm new to Dota 2 overall. [opendota.com/players/260253919/heroes](https://www.opendota.com/players/260253919/heroes)
@@ -105,3 +107,9 @@ As ally be careful to not pop his ult while healing him.
 His scythe ult is very predictable and can be easily blocked using Fate's Edict.
 
 Ghost Shroud can be purged.
+
+### Shadow Shaman
+
+His hex and lazor cannot be cleansed
+
+Ally Shaman with available passive will not die during false promise even with a glowing orb. He will turn into a chicken at the end of it and live.
