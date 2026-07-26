@@ -2,7 +2,7 @@
 title: "Dota 2 Oracle in depth"
 ---
 
-last updated: 2026-07-25
+last updated: 2026-07-26
 
 ## Content
 
@@ -75,9 +75,21 @@ healValueFinal (270) =
 (healValue (204) - damage (0)) * incomingAmp (1.2) * Oracle's outgoing amp (1.1)
 ```
 
-### Quirks
+## Quirks
 
 Debuff immunity makes **self-casted** False Promise deal 0 damage no matter what. Sources include Black King Bar and Omniknight's Repel.
+
+## Item interactions
+
+### Blink dagger
+
+Goes on cooldown whenever hit by oracle e. Be mindful of this when healing allies.
+
+### Infused raindrops
+
+Not triggered by Oracle E on allies (despite what some people claim).
+
+Will be triggered on enemies through edict as the calculation is done before reductions.
 
 ## Hero interactions
 
@@ -88,6 +100,9 @@ As foe Purifying Flames can be spammed on her as most of her effective health is
 ### Doom
 
 Can spam Purifying Flames on Doomed targets to deal damage without healing.
+
+Can heal during doom ult with false promise like with ancient apparition ult.
+Doom's ult does not damage through false promise unlike Ancient Apparition's.
 
 ### Ancient Apparition
 
@@ -111,3 +126,11 @@ Ghost Shroud can be purged.
 ### Shadow Shaman
 
 Ally Shaman with available passive will not die during false promise even with a glowing orb. He will turn into a chicken at the end of it and live.
+
+### Primal beast
+
+You can use Purifying Flames to stack uproar on an ally Primal Beast.
+
+### Bristleback
+
+You can use Purifying Flames on ally Bristleback to trigger his Bristleback passive abillity when he is facing away from you.
