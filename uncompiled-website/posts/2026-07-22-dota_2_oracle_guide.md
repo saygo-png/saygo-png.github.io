@@ -81,6 +81,10 @@ Debuff immunity makes **self-casted** False Promise deal 0 damage no matter what
 
 ## Item interactions
 
+### Clarity
+
+Puryifying flames used on allies other than yourself removes the clarity effect.
+
 ### Blink dagger
 
 Goes on cooldown whenever hit by oracle e. Be mindful of this when healing allies.
