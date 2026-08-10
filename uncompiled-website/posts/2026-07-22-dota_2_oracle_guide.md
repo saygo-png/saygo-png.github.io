@@ -81,9 +81,9 @@ Debuff immunity makes **self-casted** False Promise deal 0 damage no matter what
 
 ## Item interactions
 
-### Clarity
+### Clarity, Healing salve, Urn of Shadows, Spirit Vessel etc.
 
-Puryifying flames used on allies other than yourself removes the clarity effect.
+Puryifying flames used on allies other than yourself removes the effects.
 
 ### Blink dagger
 
@@ -137,4 +137,8 @@ You can use Purifying Flames to stack uproar on an ally Primal Beast.
 
 ### Bristleback
 
-You can use Purifying Flames on ally Bristleback to trigger his Bristleback passive abillity when he is facing away from you.
+You can use Purifying Flames on ally Bristleback to trigger his Bristleback passive ability when he is facing away from you.
+
+### Lion
+
+You can dispel both the on-kill and resurrect buffs from an enemy Lion despite the tooltip saying they cant be dispeled.
