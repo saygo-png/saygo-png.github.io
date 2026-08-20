@@ -2,7 +2,7 @@
 title: "Dota 2 Oracle in depth"
 ---
 
-last updated: 2026-07-26
+last updated: 2026-08-20 (7.41e)
 
 ## Content
 
@@ -83,7 +83,7 @@ Debuff immunity makes **self-casted** False Promise deal 0 damage no matter what
 
 ### Clarity, Healing salve, Urn of Shadows, Spirit Vessel etc.
 
-Puryifying flames used on allies other than yourself removes the effects.
+Puryifying flames used on allies other than yourself removes the effects unless edict is used.
 
 ### Blink dagger
 
