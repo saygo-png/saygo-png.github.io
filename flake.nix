@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     systems = {
       url = "path:./nix/systems.nix";
@@ -22,11 +22,11 @@
       });
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f system pkgsFor.${system});
     treefmtEval = eachSystem (_: pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./nix/treefmt.nix);
-    getGhcPkgs = pkgs: pkgs.haskell.packages.ghc984;
+    getHPkgs = pkgs: pkgs.haskellPackages;
   in {
     formatter = eachSystem (system: _: treefmtEval.${system}.config.build.wrapper);
     packages = eachSystem (_system: pkgs: let
-      ghcPackages = getGhcPkgs pkgs;
+      ghcPackages = getHPkgs pkgs;
       static-site-generator =
         pkgs.haskell.lib.compose.overrideCabal
         rec {
@@ -74,14 +74,14 @@
     devShells = eachSystem (_system: pkgs: {
       default = pkgs.mkShell {
         packages = let
-          ghcPackages = getGhcPkgs pkgs;
+          hPkgs = getHPkgs pkgs;
         in [
           pkgs.pkg-config
           pkgs.libsodium
           pkgs.zlib
-          ghcPackages.ghc
-          ghcPackages.cabal-install
-          ghcPackages.haskell-language-server
+          hPkgs.ghc
+          hPkgs.cabal-install
+          hPkgs.haskell-language-server
         ];
       };
     });
